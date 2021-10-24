@@ -1,0 +1,176 @@
+1. type command is used to identy whether command is internal or external
+
+ex-    
+> type uname 
+output -> uname is /usr/bin/uname
+
+> type echo
+output -> echo is a shell builtin
+
+2.Display environment variable
+
+> env
+
+3. How to change the PS1 for variable controlling
+
+> PS1 ="My new project: "
+it will replace the $ with "My new project"
+My new project: echo hello world
+output
+My new project: hello world
+
+4. how you know whether process is in subshell or not
+> echo $SHLVL
+>1
+
+A 1 indcate you are not in subshell because subshell have higher numbers.
+
+5. To preserve an environment variable you need to employ the "export" command
+
+> export variable_name
+
+6. You can reverse any modification you make to the variable by using the Unset command
+
+> unset PS1
+
+7. Getting help for any command
+> man uname
+
+8. To view the history of recent commands
+> history
+
+To display the comnmand on the history
+> !310 -> 310 is the number which define the command executed 
+
+Note - History command is used in bash shell.
+
+To execute the most recent command
+> !!
+9. Three popular Text Editors in Linux
+a. emacs
+b. nano
+c. vim stands for "vi"
+
+Ubuntu use alternative of Vim called vim.tiny
+
+VIM Editor Modes
+
+Three standard modes 
+    1. Command Modes - Sometimes called normal mode and is used when you enter first time
+
+    2. Insert Mode -  Sometimes called edit or entry mode. This mode is used for simple editing.
+
+    3. Ex Mode - Sometimes called colon command mode.
+
+10. Display a small file use Cat command
+> cat filename
+
+Options used in cat command
+
+-A  - Equivalent to using the option -vET combination
+-E  - Display a $ when a new line linefeed s encountered
+-n  - Number all text files lines and display that number in the output
+-s  - Do not display repeated blank empty lines
+-T  - Display a ^I when a tab character is encountered
+-v  - Display non printing characters when encountered using either ^ and/or M-notation
+
+11. Paste command is used to join the two files together side by side
+
+> paste file1 file2
+
+12. OD command is used to to troubleshoot if any file modified by a program. It allows you to display a file contents in Octal , hexadecimal , decimal and ASCII.
+
+od filename
+-o  - Octal
+-d  - decimal
+-x  - hexadecimal
+
+13. Split command us used to divide a large file into small chunks. You can divide a file using size, bytes, lines. 
+Note - The original input remains unchanged and aditional new files will create depending on the command options.
+> cat file1
+output
+> This is a file
+> input1
+> input2
+> input3
+> input4
+
+To split
+> split -l 3 file1 split
+
+will generate two files splitaa and spilitab
+> ls split*
+splitaa splitab
+
+> cat splitaa
+output
+> This is a file
+> input1
+> input2
+
+> cat splitab
+> input3
+> input4
+
+14. Sort utility sorts a files data. It will not change the original file only the output is sorted.
+
+> sort file1
+
+15. "nl" command is file formatting command. This utility is used to number lines in a text file.
+
+> nl file
+
+16. File Viewing Commands
+    1. Reading a large text file is using a pager. the two most commonly used pagers are the more and less command utility 
+        More - you can move forward through a text file by pressing the spacebar(one page down) or the enter key (one line down). You can not move backward through a file.
+        > more filename
+        Less - the less page utility allows the faster file traversal because it does not read the entire file
+                prior to displaying the file first page. Up and down key is used to traverse the file.
+        > less filename
+
+    2. head - display the top file text and it will display by default 10 lines of a text file.
+        > head filename
+        or
+        > head -n 2 filename -> display two line from the top of the text file.
+    
+    3. tail - display by default 10 last lines for the text files
+        > tail filename
+        or
+        > tail -n 5 filename -> display last 5 lines for the text files
+
+        Note the most useful tail utility feature is its ability to watch log files.
+
+        > sudo tail -f /var/log/auth.log
+
+        -f or --follow  - switch on the tail command 
+
+17. File summarizing commands
+
+    1. WC command is used to determine counts in a text file
+    > wc filename -> No of lines, words and bytes in that order
+
+    2. CUT command is used to sift through the data in a large text file
+    > cut -d ":" -f 1,7 /etc/passwd
+
+    3. uniq command is used to find the repeated linex in text file.
+    > uniq filename
+
+    4. MD% algorith- md5sum is based on MD5 message digest algorith. It is originally created for the cryptography. 
+       it is still excellent for checking a file integrity.
+    > md5sum filename
+
+    it produce a 128 bit hash value. 
+
+    5. Secure hash algorithm is used for cryptography purpose . It is also used for checking the file integrity after it is copied or moved to another location.
+     a. To find SHA utility names
+       > ls -l /usr/bin/sha???sum
+        output
+       > /usr/bin/sha224sum
+       > /usr/bin/sha256sum
+       > /usr/bin/sha384sum
+       > /usr/bin/sha512sum
+
+       Example
+       > sha256sum filename
+
+18. Regular expression
